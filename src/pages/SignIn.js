@@ -23,6 +23,7 @@ class SignIn extends React.Component {
             handleLogin={function () {
               history.push("/");
             }}
+            notifyWarn={this.props.notifyWarn}
           />
         </div>
       </div>

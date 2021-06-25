@@ -828,6 +828,8 @@ html {
   }
 }
 .fileNotFound {
+  position: relative;
+
   width: 100%;
   min-height: 100vh;
 
@@ -836,10 +838,10 @@ html {
   background-size: cover;
 }
 .fileNotFound-form__button {
-  position: relative;
-  top: 83.8rem;
+  position: absolute;
+  top: 50%;
   left: 50%;
-  
+
   width: 40rem;
   height: 4rem;
   color: #00d0fa;
@@ -849,7 +851,7 @@ html {
   text-transform: capitalize;
   background-color: #121d39;
 
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 .fileNotFound-form__button:hover {
   color: #121d39;

@@ -13,7 +13,6 @@ const axiosInstance = axios.create({
     accept: "application/json",
   },
 });
-
 export async function login({ username = "", password = "" }) {
   const data = {
     username,

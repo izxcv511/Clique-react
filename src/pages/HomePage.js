@@ -62,7 +62,11 @@ class HomePage extends React.Component {
             handleLogout={this.handleLogout}
           />
           <NavHome handleChangeCategory={handleChangeCategory} />
-          <PostList category={category} currentUser={currentUser} />
+          <PostList
+            category={category}
+            currentUser={currentUser}
+            notifyWarn={this.props.notifyWarn}
+          />
         </div>
       </div>
     );

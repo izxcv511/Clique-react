@@ -10,6 +10,7 @@ class PostList extends React.Component {
     this.state = {
       posts: [],
       pageIndex: 0,
+      loadPost: true,
     };
     this.handleClickReaction = this.handleClickReaction.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
@@ -20,14 +21,27 @@ class PostList extends React.Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.category !== this.props.category) {
-      this.setState({
-        posts: [],
-        pageIndex: 0,
+      this.setState(() => {
+        this.addPosts(0);
+
+        return {
+          posts: [],
+          pageIndex: 0,
+          loadPost: false,
+        };
       });
+    }
+    if (
+      prevState.pageIndex !== this.state.pageIndex &&
+      this.state.loadPost &&
+      this.state.loadPost === prevState.loadPost
+    ) {
       this.addPosts(this.state.pageIndex);
     }
-    if (prevState.pageIndex !== this.state.pageIndex) {
-      this.addPosts(this.state.pageIndex);
+    if (!this.state.loadPost) {
+      this.setState({
+        loadPost: true,
+      });
     }
   }
   handleScroll() {
@@ -82,7 +96,7 @@ class PostList extends React.Component {
             posts: posts,
           });
         } else {
-          alert(resp.error);
+          this.props.notifyWarn(resp.error);
         }
       });
     } else {
@@ -95,7 +109,7 @@ class PostList extends React.Component {
             posts: posts,
           });
         } else {
-          alert(resp.error);
+          this.props.notifyWarn(resp.error);
         }
       });
     }

@@ -48,7 +48,7 @@ class SignInForm extends React.Component {
         if (resp.ok) {
           this.props.handleLogin();
         } else {
-          alert(resp.error);
+          this.props.notifyWarn(resp.error);
         }
       });
     }

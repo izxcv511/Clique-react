@@ -10,9 +10,8 @@ export default function SignInContent(props) {
         <div className="sign-in__content">
           <h1 className="sign-in__title">Sign in</h1>
           <SignInForm
-            handleLogin={function () {
-              props.handleLogin();
-            }}
+            handleLogin={props.handleLogin}
+            notifyWarn={props.notifyWarn}
           />
           <h2 className="sign-in__caption">Or </h2>
           <SignInSocial />
